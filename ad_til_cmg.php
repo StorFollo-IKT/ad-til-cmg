@@ -18,9 +18,6 @@ require 'adtools/adtools.class.php';
 require 'vendor/autoload.php';
 $adtools=new adtools('admin');
 //Last inn modul for informasjon om ansatte
-/*require '../ansattinfo/ansattinfo.class.php';
-$ansattinfo=new ansattinfo;*/
-//require 'employee-info-stamdata3-extension.class.php';
 $ansattinfo_stamdata=new employee_info_stamdata3('/mnt/share/data/Stamdata3_teis_AK.xml');
 
 //Felter som brukes i CMG
@@ -30,20 +27,10 @@ $field_mapping=array('Fornavn'=>'givenName','Etternavn'=>'sn','Mobil'=>'mobile',
 //Statiske felter som skal være like på alle brukere
 $fields_static=array('Meldingssystem 1'=>'E-Mail','Meldingssystem 2'=>'SMS');
 //LDAP søk som skal gjøres mot AD. Nøkkel er base DN og verdi er LDAP query
-/*$searches=array(
-	'OU=Adminnett,DC=as-admin,DC=no'					=>'(&(|(telephoneNumber=*)(&(physicalDeliveryOfficeName=Myrveien 16)(mobile=*)))(objectClass=user))',
-	'OU=Teknikk og Miljø,OU=Adminnett,DC=as-admin,DC=no'=>'(&(|(telephoneNumber=*))(objectClass=user))',
-	'OU=Driftstjenester,OU=Helse og Sosialtjenester,OU=Adminnett,DC=as-admin,DC=no'=>'(&(|(telephoneNumber=*)(mobile=*))(objectClass=user))',
-	'OU=Plan og Utvikling,OU=Adminnett,DC=as-admin,DC=no'=>'(&(|(telephoneNumber=*)(mobile=*))(objectClass=user))',
-);*/
 $searches=array(
     'OU=Adminnett,DC=as-admin,DC=no'					=>'(&(telephoneNumber=*)(objectClass=user))',
 );
 
-/*$name_finds=array('Rådmannens ledergruppe','IKT','etaten','Organisasjons og personalansvar','PPS');
-$name_replaces=array('Rådmann','IT','','Organisasjon og personal','Pedagogisk psykologisk senter (PPS)');*/
-
-//$fp=fopen('/mnt/cmg_import/ad_til_cmg.csv','w+');
 $fp=fopen(__DIR__.'/ad_til_cmg.csv','w+');
 if($fp===false)
 	die("Unable to open file\n");
@@ -99,21 +86,6 @@ foreach($users as $user)
 	{
 	    try {
             $fields_dynamic['Organisasjon']=$ansattinfo_stamdata->organisation_path($user['employeeid'][0]);
-            /*$organisasjon=$ansattinfo_stamdata->organisasjon($ressursnummer=$user['employeeid'][0]);
-            if($organisasjon!==false)
-            {
-                $fields_dynamic['Organisasjon']=$organisasjon;
-                $tittel_agresso=(string)$ansattinfo_stamdata->Main_Position($ressursnummer)->PostCodeDescription;
-                if(empty($user['title']))
-                    $fields_dynamic['Tittel']=$tittel_agresso;
-                $fields_dynamic['Tittel agresso']=$tittel_agresso;
-            }
-            else
-            {
-                echo 'Feil på bruker '.$user['samaccountname'][0].":\n";
-                echo $ansattinfo_stamdata->error."\n";
-                $fields_dynamic['Organisasjon']='Ås kommune';
-            }*/
         }
         catch (exceptions\DataException|exceptions\NoHitsException $e)
         {
@@ -125,7 +97,6 @@ foreach($users as $user)
         {
             $fields_dynamic['Organisasjon']='Ås kommune\\Sluttet';
         }
-
 
 		//printf("%s: %s\n",$user['employeeid'],$user['samaccountname']);
 		if(substr($user['employeeid'][0],0,1)==4)
@@ -152,20 +123,16 @@ foreach($users as $user)
                 $org = $ansattinfo_stamdata->organisation_info($ou_attributes[$org_field_ou][0]);
                 $fields_dynamic['Organisasjon'] = $ansattinfo_stamdata->organisation_path($org);
             }
-            catch (DataException | EmployeeNotFoundException $e)
+            catch (exceptions\DataException | exceptions\EmployeeNotFoundException | exceptions\NoHitsException $e)
             {
                 $fields_dynamic['Organisasjon']='Ås kommune\\Feil';
             }
-
         }
         else
             $fields_dynamic['Organisasjon']='Innleide/eksterne';
 
     }
 
-
-	/*elseif(!empty($user['department'][0]))
-		$fields_static['Organisasjon']='Ås kommune\\'.$user['department'][0];*/
 	if(!empty($user['department']) && $user['department'][0]=='Kirkekontoret')
 		$fields_dynamic['Organisasjon']='Ås kommune\\IKS\\Kirkekontoret';
 
@@ -232,11 +199,6 @@ foreach($users as $user)
 			$csv_fields[$cmg_field]='';
 		}
 	}
-    /*if(empty($fields_dynamic['Organisasjon_ny']) && $fields_dynamic['Organisasjon']!='Ås kommune') {
-        print_r($fields_cmg);
-        print_r($fields_dynamic);
-        die();
-    }*/
 
 	array_walk($csv_fields,'encodeCSV');
 	fwrite($fp,implode(';',$csv_fields)."\r\n");
