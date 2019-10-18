@@ -50,24 +50,11 @@ foreach($searches as $base_dn=>$filter)
 
 unset($users['count']);
 
-//echo sprintf("Found %s users\n",$count=count($users));
 $fields_ad=array('givenName','sn','title','physicalDeliveryOfficeName','telephoneNumber','sAMAccountName','mail','mobile','department', 'otherTelephone');
-
-//$fields=array_combine($fields_ad,$fields_cmg);
-//$count=$users['count'];
 
 fwrite($fp,implode(';',$fields_cmg)."\r\n");
 
-//Nummerserier på rådhuset
-$series[]=array(2000,2599);
-$series[]=array(2660,2709);
-$series[]=array(2820,2849);
-$series[]=array(2900,2999); //Rustad
-$series[]=array(300,339);
-$series[]=array(4310,4339);
-$series[]=array(4400,4499); //Nordby
-$series[]=array(4960,4969);
-$series[]=array(5020,5039);
+$config = require 'config.php';
 
 //TODO: Fjern $ i nøkkelord
 //$value = str_replace('$','',$value);
@@ -98,12 +85,8 @@ foreach($users as $user)
             $fields_dynamic['Organisasjon']='Ås kommune\\Sluttet';
         }
 
-		//printf("%s: %s\n",$user['employeeid'],$user['samaccountname']);
 		if(substr($user['employeeid'][0],0,1)==4)
 			$fields_dynamic['Organisasjon']='Ås kommune\\IKS\\Krise- og incestsenteret i Follo';
-		/*elseif($ansattinfo_stamdata->find_employee($user['employeeid'][0])===false)
-             $fields_dynamic['Organisasjon']='Ås kommune\\Sluttet';*/
-
 	}
 	else
     {
@@ -148,10 +131,10 @@ foreach($users as $user)
 		//echo "Henter info for {$user['telephonenumber'][0]}\n";
 		if(substr($user['telephonenumber'][0],0,3)=='649')
 		{
-			foreach($series as $range)
+			foreach($config['series'] as $range)
 			{
 				//Sjekk om nummeret er på MX-ONE på Rådhuset
-				if($internnummer>=$range[0] && $internnummer<=$range[1]/* && !empty($ressursnummer)*/)
+				if($internnummer>=$range[0] && $internnummer<=$range[1])
 				{
 					$fields_dynamic['Tlf.nr internt']=$internnummer;
 					$fields_dynamic['Postkassenummer']=$internnummer;
