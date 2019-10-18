@@ -1,0 +1,6 @@
+{
+    "require": {
+        "askommune/employee-info-stamdata3": "dev-master",
+        "php": ">=7.1"
+    }
+}

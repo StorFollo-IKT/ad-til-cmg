@@ -1,0 +1,62 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "bff61da792d627f0068c099b3ad24f80",
+    "packages": [
+        {
+            "name": "askommune/employee-info-stamdata3",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datagutten/employee-info-stamdata3.git",
+                "reference": "294451629c88cc2ce1465957079e79474d17ef62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datagutten/employee-info-stamdata3/zipball/294451629c88cc2ce1465957079e79474d17ef62",
+                "reference": "294451629c88cc2ce1465957079e79474d17ef62",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "employee_info_stamdata3.class.php"
+                ],
+                "psr-4": {
+                    "askommune\\EmployeeInfo\\": "src",
+                    "askommune\\EmployeeInfo\\exceptions\\": "exceptions"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "datagutten",
+                    "email": "datagutten@datagutten.net"
+                }
+            ],
+            "description": "A PHP class to work with information about employees from a file exported from agresso business world in the format \"stamdata3\"",
+            "time": "2019-08-09T09:49:49+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "askommune/employee-info-stamdata3": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=7.1"
+    },
+    "platform-dev": []
+}
