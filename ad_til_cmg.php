@@ -14,9 +14,8 @@ function encodeCSV(&$value, $key){ //Funksjon for å lage riktig tegnsett for wi
 }
 chdir(dirname(__FILE__));
 //Last inn modul for kommunikasjon med AD
-require 'adtools/adtools.class.php';
 require 'vendor/autoload.php';
-$adtools=new adtools('admin');
+$adtools=new \datagutten\adtools\adtools('admin');
 //Last inn modul for informasjon om ansatte
 $ansattinfo_stamdata=new employee_info_stamdata3('/mnt/share/data/Stamdata3_teis_AK.xml');
 
@@ -90,7 +89,7 @@ foreach($users as $user)
 	}
 	else
     {
-        $ou=$adtools->get_ou($user['dn']);
+        $ou=\datagutten\adtools\adtools_utils::ou($user['dn']);
 
         $org_field_ou = 'postalCode';
         $result = ldap_read($adtools->ad, $ou, '(objectClass=organizationalUnit)', array($org_field_ou));

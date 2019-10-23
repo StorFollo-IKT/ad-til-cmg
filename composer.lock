@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bff61da792d627f0068c099b3ad24f80",
+    "content-hash": "4d4e59227e2bffc98bbd151c6d975914",
     "packages": [
         {
             "name": "askommune/employee-info-stamdata3",
-            "version": "dev-master",
+            "version": "v1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/datagutten/employee-info-stamdata3.git",
-                "reference": "294451629c88cc2ce1465957079e79474d17ef62"
+                "reference": "01cfbea1bc3850582e0425e298319da942f76fab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/datagutten/employee-info-stamdata3/zipball/294451629c88cc2ce1465957079e79474d17ef62",
-                "reference": "294451629c88cc2ce1465957079e79474d17ef62",
+                "url": "https://api.github.com/repos/datagutten/employee-info-stamdata3/zipball/01cfbea1bc3850582e0425e298319da942f76fab",
+                "reference": "01cfbea1bc3850582e0425e298319da942f76fab",
                 "shasum": ""
             },
             "require": {
@@ -44,19 +44,66 @@
                 }
             ],
             "description": "A PHP class to work with information about employees from a file exported from agresso business world in the format \"stamdata3\"",
-            "time": "2019-08-09T09:49:49+00:00"
+            "time": "2019-09-09T06:49:04+00:00"
+        },
+        {
+            "name": "datagutten/adtools",
+            "version": "v2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datagutten/adtools.git",
+                "reference": "5b391579ce0ecbf0d8e334430eb2163fde0b6ff3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datagutten/adtools/zipball/5b391579ce0ecbf0d8e334430eb2163fde0b6ff3",
+                "reference": "5b391579ce0ecbf0d8e334430eb2163fde0b6ff3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gettext": "*",
+                "ext-ldap": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0|^8.0",
+                "symfony/filesystem": "^4.3",
+                "symfony/process": "^4.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "datagutten\\adtools\\": "src",
+                    "datagutten\\adtools\\tests\\": "tests"
+                },
+                "files": [
+                    "set_locale.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "datagutten",
+                    "email": "datagutten@datagutten.net"
+                }
+            ],
+            "description": "Tools for working with Active Directory from PHP",
+            "time": "2019-08-23T11:14:53+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "askommune/employee-info-stamdata3": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1"
+        "php": ">=7.1",
+        "ext-iconv": "*",
+        "ext-ldap": "*"
     },
     "platform-dev": []
 }

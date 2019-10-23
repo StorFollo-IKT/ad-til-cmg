@@ -1,6 +1,9 @@
 {
     "require": {
-        "askommune/employee-info-stamdata3": "dev-master",
-        "php": ">=7.1"
+        "askommune/employee-info-stamdata3": "^1.2",
+        "php": ">=7.1",
+        "ext-iconv": "*",
+        "ext-ldap": "*",
+        "datagutten/adtools": "^2.1"
     }
 }
