@@ -95,10 +95,7 @@ foreach($users as $user)
         $result = ldap_read($adtools->ad, $ou, '(objectClass=organizationalUnit)', array($org_field_ou));
         $result = ldap_first_entry($adtools->ad, $result);
         $ou_attributes = ldap_get_attributes($adtools->ad, $result);
-        if($user['samaccountname'][0]=='nsv') {
-            print_r($user);
-            print_r($ou_attributes);
-        }
+
         if(isset($ou_attributes[$org_field_ou]))
         {
             try {
