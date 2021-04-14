@@ -2,10 +2,10 @@
     "name": "storfollo/ad_til_cmg",
     "description": "",
     "require": {
-        "storfollo/employee-info-stamdata3": "v2.0",
+        "storfollo/employee-info-stamdata3": "^2.0",
         "php": ">=7.1",
         "ext-iconv": "*",
         "ext-ldap": "*",
-        "datagutten/adtools": "^2.1"
+        "storfollo/adtools": "^3.0"
     }
 }

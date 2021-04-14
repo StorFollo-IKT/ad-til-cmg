@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9127a73e90a2edeb64601bf2676e878",
+    "content-hash": "2308a219521d685dc8fd63ac78aca65c",
     "packages": [
         {
-            "name": "datagutten/adtools",
-            "version": "v2.1",
+            "name": "storfollo/adtools",
+            "version": "v3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/StorFollo-IKT/adtools.git",
-                "reference": "5b391579ce0ecbf0d8e334430eb2163fde0b6ff3"
+                "reference": "b651852786559383fc253349e76f4d708eeaafd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/StorFollo-IKT/adtools/zipball/5b391579ce0ecbf0d8e334430eb2163fde0b6ff3",
-                "reference": "5b391579ce0ecbf0d8e334430eb2163fde0b6ff3",
+                "url": "https://api.github.com/repos/StorFollo-IKT/adtools/zipball/b651852786559383fc253349e76f4d708eeaafd6",
+                "reference": "b651852786559383fc253349e76f4d708eeaafd6",
                 "shasum": ""
             },
             "require": {
@@ -33,8 +33,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "datagutten\\adtools\\": "src",
-                    "datagutten\\adtools\\tests\\": "tests"
+                    "storfollo\\adtools\\": "src",
+                    "storfollo\\adtools\\tests\\": "tests"
                 },
                 "files": [
                     "set_locale.php"
@@ -46,33 +46,36 @@
             ],
             "authors": [
                 {
-                    "name": "datagutten",
-                    "email": "datagutten@datagutten.net"
+                    "name": "Anders Birkenes",
+                    "email": "anders.birkenes@storfolloikt.no"
                 }
             ],
             "description": "Tools for working with Active Directory from PHP",
             "support": {
                 "issues": "https://github.com/StorFollo-IKT/adtools/issues",
-                "source": "https://github.com/StorFollo-IKT/adtools/tree/v2.1"
+                "source": "https://github.com/StorFollo-IKT/adtools/tree/v3.0"
             },
-            "time": "2019-08-23T11:14:53+00:00"
+            "time": "2021-03-25T07:49:01+00:00"
         },
         {
             "name": "storfollo/employee-info-stamdata3",
-            "version": "v2.0",
+            "version": "v2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/StorFollo-IKT/employee-info-stamdata3.git",
-                "reference": "9d001fffd9cae8e310625eb14410d144a480b88b"
+                "reference": "14b2e3e8fe44016fbbc9194ecc96c45939dd59a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/StorFollo-IKT/employee-info-stamdata3/zipball/9d001fffd9cae8e310625eb14410d144a480b88b",
-                "reference": "9d001fffd9cae8e310625eb14410d144a480b88b",
+                "url": "https://api.github.com/repos/StorFollo-IKT/employee-info-stamdata3/zipball/14b2e3e8fe44016fbbc9194ecc96c45939dd59a6",
+                "reference": "14b2e3e8fe44016fbbc9194ecc96c45939dd59a6",
                 "shasum": ""
             },
             "require": {
                 "ext-simplexml": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.3|^9"
             },
             "type": "library",
             "autoload": {
@@ -94,9 +97,9 @@
             "description": "A PHP class to work with information about employees from a file exported from agresso business world in the format \"stamdata3\"",
             "support": {
                 "issues": "https://github.com/StorFollo-IKT/employee-info-stamdata3/issues",
-                "source": "https://github.com/StorFollo-IKT/employee-info-stamdata3/tree/v2.0"
+                "source": "https://github.com/StorFollo-IKT/employee-info-stamdata3/tree/v2.1"
             },
-            "time": "2021-04-14T10:11:04+00:00"
+            "time": "2021-04-14T19:20:14+00:00"
         }
     ],
     "packages-dev": [],
