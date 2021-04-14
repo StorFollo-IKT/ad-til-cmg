@@ -20,10 +20,11 @@ function encodeCSV(&$value, $key){ //Funksjon for å lage riktig tegnsett for wi
 }
 chdir(dirname(__FILE__));
 //Last inn modul for kommunikasjon med AD
+$config = require 'config.php';
 require 'vendor/autoload.php';
 $adtools=new adtools\adtools('admin');
 //Last inn modul for informasjon om ansatte
-$ansattinfo_stamdata=new employee_info_stamdata3('/mnt/share/data/Stamdata3_teis_AK.xml');
+$ansattinfo_stamdata=new employee_info_stamdata3($config['stamdata']);
 
 //Felter som brukes i CMG
 $fields_cmg=array('Fornavn','Etternavn','Tlf.nr internt','PBX ID','Mobil','Tittel','Postkassenummer','Arb.adresse','Ekstern nummer','Bruker ID','Meldingssystem 1','Meldings id 1','Meldingssystem 2','Meldings id 2','Arb.gruppe','Organisasjon','Ressursnummer', 'Nøkkelord');
@@ -36,9 +37,9 @@ $searches=array(
     'OU=Adminnett,DC=as-admin,DC=no'					=>'(&(telephoneNumber=*)(objectClass=user))',
 );
 
-$fp=fopen(__DIR__.'/ad_til_cmg.csv','w+');
-if($fp===false)
-	die("Unable to open file\n");
+$fp = fopen($config['output_file'], 'w');
+if ($fp === false)
+    die("Unable to open output file\n");
 
 //Gjør om feltnavn i AD til små bokstaver
 array_walk($field_mapping,function (&$value,$key){$value=strtolower($value);});
@@ -58,8 +59,6 @@ unset($users['count']);
 $fields_ad=array('givenName','sn','title','physicalDeliveryOfficeName','telephoneNumber','sAMAccountName','mail','mobile','department', 'otherTelephone');
 
 fwrite($fp,implode(';',$fields_cmg)."\r\n");
-
-$config = require 'config.php';
 
 //TODO: Fjern $ i nøkkelord
 //$value = str_replace('$','',$value);
