@@ -4,59 +4,19 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d4e59227e2bffc98bbd151c6d975914",
+    "content-hash": "f9127a73e90a2edeb64601bf2676e878",
     "packages": [
-        {
-            "name": "askommune/employee-info-stamdata3",
-            "version": "v1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/datagutten/employee-info-stamdata3.git",
-                "reference": "01cfbea1bc3850582e0425e298319da942f76fab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/datagutten/employee-info-stamdata3/zipball/01cfbea1bc3850582e0425e298319da942f76fab",
-                "reference": "01cfbea1bc3850582e0425e298319da942f76fab",
-                "shasum": ""
-            },
-            "require": {
-                "ext-simplexml": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "employee_info_stamdata3.class.php"
-                ],
-                "psr-4": {
-                    "askommune\\EmployeeInfo\\": "src",
-                    "askommune\\EmployeeInfo\\exceptions\\": "exceptions"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "datagutten",
-                    "email": "datagutten@datagutten.net"
-                }
-            ],
-            "description": "A PHP class to work with information about employees from a file exported from agresso business world in the format \"stamdata3\"",
-            "time": "2019-09-09T06:49:04+00:00"
-        },
         {
             "name": "datagutten/adtools",
             "version": "v2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/datagutten/adtools.git",
+                "url": "https://github.com/StorFollo-IKT/adtools.git",
                 "reference": "5b391579ce0ecbf0d8e334430eb2163fde0b6ff3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/datagutten/adtools/zipball/5b391579ce0ecbf0d8e334430eb2163fde0b6ff3",
+                "url": "https://api.github.com/repos/StorFollo-IKT/adtools/zipball/5b391579ce0ecbf0d8e334430eb2163fde0b6ff3",
                 "reference": "5b391579ce0ecbf0d8e334430eb2163fde0b6ff3",
                 "shasum": ""
             },
@@ -91,7 +51,52 @@
                 }
             ],
             "description": "Tools for working with Active Directory from PHP",
+            "support": {
+                "issues": "https://github.com/StorFollo-IKT/adtools/issues",
+                "source": "https://github.com/StorFollo-IKT/adtools/tree/v2.1"
+            },
             "time": "2019-08-23T11:14:53+00:00"
+        },
+        {
+            "name": "storfollo/employee-info-stamdata3",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/StorFollo-IKT/employee-info-stamdata3.git",
+                "reference": "9d001fffd9cae8e310625eb14410d144a480b88b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/StorFollo-IKT/employee-info-stamdata3/zipball/9d001fffd9cae8e310625eb14410d144a480b88b",
+                "reference": "9d001fffd9cae8e310625eb14410d144a480b88b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "storfollo\\EmployeeInfo\\": "src",
+                    "storfollo\\EmployeeInfo\\exceptions\\": "exceptions"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "datagutten",
+                    "email": "datagutten@datagutten.net"
+                }
+            ],
+            "description": "A PHP class to work with information about employees from a file exported from agresso business world in the format \"stamdata3\"",
+            "support": {
+                "issues": "https://github.com/StorFollo-IKT/employee-info-stamdata3/issues",
+                "source": "https://github.com/StorFollo-IKT/employee-info-stamdata3/tree/v2.0"
+            },
+            "time": "2021-04-14T10:11:04+00:00"
         }
     ],
     "packages-dev": [],
@@ -105,5 +110,6 @@
         "ext-iconv": "*",
         "ext-ldap": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }

@@ -1,6 +1,8 @@
 {
+    "name": "storfollo/ad_til_cmg",
+    "description": "",
     "require": {
-        "askommune/employee-info-stamdata3": "^1.2",
+        "storfollo/employee-info-stamdata3": "v2.0",
         "php": ">=7.1",
         "ext-iconv": "*",
         "ext-ldap": "*",

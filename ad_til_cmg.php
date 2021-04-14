@@ -1,6 +1,6 @@
 <?Php
-use askommune\EmployeeInfo;
-use askommune\EmployeeInfo\exceptions;
+use storfollo\EmployeeInfo\exceptions;
+use storfollo\EmployeeInfo\employee_info_stamdata3;
 
 function encodeCSV(&$value, $key){ //Funksjon for å lage riktig tegnsett for windows (http://stackoverflow.com/questions/12488954/php-fputcsv-encoding)
     $value_old = $value;
