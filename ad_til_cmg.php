@@ -3,13 +3,17 @@ use askommune\EmployeeInfo;
 use askommune\EmployeeInfo\exceptions;
 
 function encodeCSV(&$value, $key){ //Funksjon for å lage riktig tegnsett for windows (http://stackoverflow.com/questions/12488954/php-fputcsv-encoding)
+    $value_old = $value;
 	if(!is_string($value))
 		$value='';
 	else
 	{
-	    $value = iconv('UTF-8', 'Windows-1252', $value);
+	    $value = @iconv('UTF-8', 'Windows-1252', $value);
 		if($value===false)
-			die();
+        {
+            $error = error_get_last();
+            throw new RuntimeException(sprintf('Error converting "%s" key "%s" to Windows-1252: %s', $value_old, $key, $error['message']));
+        }
 	}
 }
 chdir(dirname(__FILE__));
@@ -178,8 +182,17 @@ foreach($users as $user)
 			$csv_fields[$cmg_field]='';
 		}
 	}
-
-	array_walk($csv_fields,'encodeCSV');
+    try
+    {
+        array_walk($csv_fields, 'encodeCSV');
+    }
+	catch (RuntimeException $e)
+    {
+        echo $e->getMessage()."\n";
+        echo $e->getTraceAsString()."\n";
+        print_r($user);
+        continue;
+    }
 	fwrite($fp,implode(';',$csv_fields)."\r\n");
 	unset($csv_fields,$organisasjon,$ressursnummer,$internnummer,$fields_dynamic);
 }
