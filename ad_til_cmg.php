@@ -77,7 +77,7 @@ foreach($users as $user)
 	    try {
             $fields_dynamic['Organisasjon']=$ansattinfo_stamdata->organisation_path($user['employeeid'][0]);
         }
-        catch (exceptions\DataException|exceptions\NoHitsException $e)
+        catch (exceptions\DataException|exceptions\NoHitsException|InvalidArgumentException $e)
         {
             printf("Error user %s: %s\n", $user['employeeid'][0], $e->getMessage());
             $fields_dynamic['Organisasjon_ny']='';
